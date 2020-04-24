@@ -1,0 +1,26 @@
+void input()
+{
+	int num,score;
+	char name[20];
+	scanf("%d %s %d",&num,name,&score);
+	while(num)
+	{
+		struct stud_node *p=(struct stud_node *)malloc(sizeof(struct stud_node));
+		p->num=num;
+		p->score=score;
+		strcpy(p->name,name);
+		if(head==NULL)
+		{
+			head=p; 
+			tail=p;
+		}
+		else
+		{
+			tail->next=p;
+			tail=p;
+		}
+		scanf("%d %s %d",&num,name,&score);
+        tail->next=NULL;
+	}
+	
+}
