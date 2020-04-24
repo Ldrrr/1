@@ -1,0 +1,34 @@
+struct stud_node *createlist()
+{
+	struct stud_node *head=(struct stud_node *)malloc(sizeof(struct stud_node)); 
+	struct stud_node *tail=head;
+	int num;
+	scanf("%d",&num);
+	while(num)
+	{
+		struct stud_node *p=(struct stud_node *)malloc(sizeof(struct stud_node));
+		p->num=num;
+		scanf("%s %d",p->name,&p->score);
+		tail->next=p;
+		tail=p;
+		scanf("%d",&num);
+	}
+	tail->next=NULL;
+	return head;
+}
+struct stud_node *deletelist( struct stud_node *head, int min_score )
+{
+	struct stud_node *r=head;
+	while(r->next)
+	{
+		if(r->next->score<min_score)
+		{
+			r->next=r->next->next;
+		}
+		else
+		{
+			r=r->next;
+		}
+	}
+	return head->next;
+}
